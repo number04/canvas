@@ -11,9 +11,5 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/soccer', 'SoccerController@get')->name('soccer');
+Route::get('/', 'SoccerController@get')->name('soccer');
 Route::post('/form', 'SoccerController@post');

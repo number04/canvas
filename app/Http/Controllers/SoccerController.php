@@ -22,7 +22,7 @@ class SoccerController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|max:255',
-            'email' => 'required|email|max:255|confirmed',
+            'email' => 'required|email|max:255|unique:users_football|confirmed',
         ]);
 
         $user = new User;

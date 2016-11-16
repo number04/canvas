@@ -312,21 +312,18 @@
         @if(Session::has('success'))
             <span class="alert alert-success">
                 <span>{{ Session::get('success') }}</span>
-                <button>x</button>
             </span>
         @endif
 
         @if(Session::has('fail'))
             <span class="alert alert-fail">
                 <span>{{ Session::get('fail') }}</span>
-                <button>x</button>
             </span>
         @endif
 
         @if(Session::has('warning'))
             <span class="alert alert-warning">
                 <span>{{ Session::get('warning') }}</span>
-                <button>x</button>
             </span>
         @endif
 
@@ -386,7 +383,7 @@
                     		<div class="control__indicator"></div>
                     	</label>
                         <label class="control control--checkbox"><span>su</span>
-                    		<input type="checkbox" name="su"/>
+                    		<input type="checkbox" name="su" value="y"/>
                     		<div class="control__indicator"></div>
                     	</label>
             		</div>
@@ -395,5 +392,13 @@
                 <input type="submit" name="submit" value="submit" class="btn-login">
             </form>
         </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+
+        <script>
+
+            $('.alert').delay(1000).fadeOut(2000, function(){ $(this).remove();});
+
+        </script>
     </body>
 </html>
