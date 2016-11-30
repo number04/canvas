@@ -9,11 +9,11 @@ use App\Models\User;
 use Redirect;
 use Session;
 
-class SoccerController extends Controller
+class FormController extends Controller
 {
     public function get(Request $request)
     {
-        return view('soccer', [
+        return view('form', [
 
         ]);
     }
@@ -22,22 +22,20 @@ class SoccerController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users_football|confirmed',
+            'email' => 'required|email|max:255|unique:users|confirmed',
         ]);
 
         $user = new User;
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->option = $request->option;
         $user->m = $request->m;
         $user->t = $request->t;
         $user->w = $request->w;
-        $user->th = $request->th;
-        $user->f = $request->f;
-        $user->s = $request->s;
         $user->su = $request->su;
         $user->save();
 
         Session::flash('success', 'Submission Succesful!');
-        return Redirect::route('soccer');
+        return Redirect::route('form');
     }
 }

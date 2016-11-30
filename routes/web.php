@@ -11,5 +11,5 @@
 |
 */
 
-Route::get('/', 'SoccerController@get')->name('soccer');
-Route::post('/form', 'SoccerController@post');
+Route::get('/', 'FormController@get')->name('form');
+Route::post('/post', 'FormController@post');

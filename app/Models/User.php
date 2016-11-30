@@ -6,13 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class User extends Model
 {
-    protected $table = 'users_football';
+    protected $table = 'users';
 
     public $timestamps = false;
 
     protected $fillable = [
         'full_name',
         'email',
+        'option',
         'm',
         't',
         't',

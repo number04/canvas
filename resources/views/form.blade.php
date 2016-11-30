@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Summer Football | Register</title>
+        <title>Ball Hockey | Register</title>
 
         <!-- Styles -->
         <style>
@@ -86,7 +86,7 @@
               .container-soccer > span {
                 text-align: center;
                 position: relative;
-                top: -68px;
+                top: -128px;
                 color: #636b6f;
                 font-weight: 100;
                 font-size: 44px;
@@ -104,7 +104,7 @@
             .form-login {
               margin: auto;
               position: relative;
-              top: -68px;
+              top: -136px;
                 }
               .form-login > div {
                 position: relative;
@@ -155,7 +155,7 @@
 
             .btn-login {
                 position: relative;
-                top: 132px;
+                top: 270px;
                 width: 100%;
                 padding: 6px 0px;
                 border-radius: 2px;
@@ -169,7 +169,7 @@
                 cursor: pointer;
             }
 
-             div.nights {
+             div.options {
                  position: absolute;
                  left: 50%;
                 -webkit-transform: translateX(-50%);
@@ -193,33 +193,112 @@
              }
 
              @media only screen and (min-width: 414px) {
-                div.nights {
+                div.options {
                    padding: 16px;
                    width: 408px;
                 }
-
              }
 
-            div.nights > span {
-                color: #636b6f;
-                font-weight: 400;
-                font-size: 18px;
-            }
+             div.options > span {
+                 font-size: 22px;
+                 font-weight: 400;
+                 text-transform: uppercase;
+                 margin-top: 4px;
+                 margin-bottom: 24px;
+             }
 
-            div.nights .checkbox {
+            div.options .radio {
                 display: -webkit-box;
                 display: flex;
-                display: -webkit-flex;
                 -webkit-box-align: center;
                 align-items: center;
                 align-content: center;
                 -webkit-box-pack: center;
                 justify-content: center;
+                flex-wrap: wrap;
+                display: -webkit-flex;
+                -webkit-flex-wrap: wrap;
+                width: 100%;
+            }
+
+            div.options .radio label {
+                width: 100%;
+            }
+
+            div.options .radio label span {
+                width: 100%;
+                margin-left: 30px;
+                position: relative;
+                font-size: 14px;
+                top: 0px;
+                text-align: left;
+            }
+
+            @media only screen and (min-width: 413px) {
+               div.options .radio label span {
+                   font-size: 18px;
+               }
+            }
+
+            div.options .reveal-if-active {
+                display: -webkit-box;
+                display: flex;
+                -webkit-box-align: center;
+                align-items: center;
+                align-content: center;
+                -webkit-box-pack: center;
+                justify-content: center;
+                flex-wrap: wrap;
+                display: -webkit-flex;
+                -webkit-flex-wrap: wrap;
 
                 width: 100%;
-                margin-top: 36px;
                 position: relative;
-                right: 14px;
+                right: 20px;
+
+                opacity: 0;
+                max-height: 0;
+                overflow: hidden;
+
+                -webkit-transform: scale(0.8);
+                        transform: scale(0.8);
+                -webkit-transition: 0.5s;
+                transition: 0.5s;
+            }
+
+            div.options .radio .reveal-if-active > span {
+                width: 36%;
+                font-size: 14px;
+                position: relative;
+                top: 22px;
+                left: -8px;
+            }
+
+            @media only screen and (min-width: 413px) {
+               div.options .radio .reveal-if-active > span {
+                   left: 8px;
+               }
+            }
+
+            div.options .radio .reveal-if-active label {
+                width: 12%;
+            }
+
+            div.options .radio .reveal-if-active .control {
+                margin-top: 40px;
+                margin-bottom: 0px;
+            }
+
+            div.options .radio .reveal-if-active .control--checkbox span {
+                position: relative;
+                font-size: 14px;
+                display: inline-block;
+                text-transform: uppercase;
+                width: 24px;
+                text-align: center;
+                top: -22px;
+                left: -32px;
+                color: #636b6f;
             }
 
             .has-error input[type="email"], .has-error input[type="text"] {
@@ -231,27 +310,18 @@
                 font-size: 18px;
                 position: relative;
                 display: block;
-                margin-bottom: 15px;
-                margin-left: 16px;
+                margin-bottom: 22px;
                 cursor: pointer;
             }
 
-            @media only screen and (min-width: 414px) {
+            /*@media only screen and (min-width: 414px) {
 
                 .control {
                 	margin-left: 32px;
                 }
-            }
+            }*/
 
             .control span {
-                position: relative;
-                font-size: 14px;
-                display: inline-block;
-                text-transform: uppercase;
-                width: 24px;
-                text-align: center;
-                top: -22px;
-                right: 3px;
                 color: #636b6f;
             }
 
@@ -271,7 +341,6 @@
             }
 
             /* Hover and focus states */
-            .control:hover input ~ .control__indicator,
             .control input:focus ~ .control__indicator {
             	background: #ccc;
             }
@@ -304,6 +373,16 @@
             	border-width: 0 2px 2px 0;
             }
 
+
+input[type="radio"]:checked ~ .reveal-if-active, input[type="checkbox"]:checked ~ .reveal-if-active {
+  opacity: 1;
+  max-height: 100px;
+
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  overflow: visible;
+}
+
         </style>
 
     </head>
@@ -329,9 +408,9 @@
 
         <div class="container-soccer full-height">
 
-            <span>Summer Football</span>
+            <span>Ball Hockey</span>
 
-            <form class="form-login" role="form" method="POST" action="{{ url('/form') }}">
+            <form class="form-login" role="form" method="POST" action="{{ url('/post') }}">
                 {{ csrf_field() }}
 
                 <div class="{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -354,39 +433,67 @@
                     <span class="label-icon"><i class="fa fa-envelope" ></i></span>
                 </div>
 
-                <div class="nights">
-                    <span> Nights Available</span>
+                <div class="options">
+                    <span>Playing Options</span>
 
-                    <div class="checkbox">
-                        <label class="control control--checkbox"><span>m</span>
-                    		<input type="checkbox" name="m" value="y"/>
+                    <div class="radio">
+                        <label class="control control--checkbox"><span>Friday Night League</span>
+                    		<input type="radio" name="option" value="o1"/>
                     		<div class="control__indicator"></div>
                     	</label>
-                        <label class="control control--checkbox"><span>t</span>
-                    		<input type="checkbox" name="t" value="y"/>
+
+                        <label class="control control--checkbox"><span>Friday Night League + Second Session</span>
+                    		<input type="radio" name="option" value="o2"/>
                     		<div class="control__indicator"></div>
+
+                            <div class="reveal-if-active">
+                                <span>Nights Available</span>
+
+                                <label class="control control--checkbox"><span>m</span>
+                            		<input type="checkbox" name="m" value="y"/>
+                            		<div class="control__indicator"></div>
+                            	</label>
+                                <label class="control control--checkbox"><span>t</span>
+                            		<input type="checkbox" name="t" value="y"/>
+                            		<div class="control__indicator"></div>
+                            	</label>
+                                <label class="control control--checkbox"><span>w</span>
+                            		<input type="checkbox" name="w" value="y"/>
+                            		<div class="control__indicator"></div>
+                            	</label>
+                                <label class="control control--checkbox"><span>su</span>
+                            		<input type="checkbox" name="su" value="y"/>
+                            		<div class="control__indicator"></div>
+                            	</label>
+                          </div>
                     	</label>
-                        <label class="control control--checkbox"><span>w</span>
-                    		<input type="checkbox" name="w" value="y"/>
+
+                        <label class="control control--checkbox"><span>Second Session Only</span>
+                    		<input type="radio" name="option" value="o3"/>
                     		<div class="control__indicator"></div>
+
+                            <div class="reveal-if-active">
+                                <span>Nights Available</span>
+
+                                <label class="control control--checkbox"><span>m</span>
+                            		<input type="checkbox" name="m" value="y"/>
+                            		<div class="control__indicator"></div>
+                            	</label>
+                                <label class="control control--checkbox"><span>t</span>
+                            		<input type="checkbox" name="t" value="y"/>
+                            		<div class="control__indicator"></div>
+                            	</label>
+                                <label class="control control--checkbox"><span>w</span>
+                            		<input type="checkbox" name="w" value="y"/>
+                            		<div class="control__indicator"></div>
+                            	</label>
+                                <label class="control control--checkbox"><span>su</span>
+                            		<input type="checkbox" name="su" value="y"/>
+                            		<div class="control__indicator"></div>
+                            	</label>
+                          </div>
                     	</label>
-                        <label class="control control--checkbox"><span>th</span>
-                    		<input type="checkbox" name="th" value="y"/>
-                    		<div class="control__indicator"></div>
-                    	</label>
-                        <label class="control control--checkbox"><span>f</span>
-                    		<input type="checkbox" name="f" value="y"/>
-                    		<div class="control__indicator"></div>
-                    	</label>
-                        <label class="control control--checkbox"><span>s</span>
-                    		<input type="checkbox" name="s" value="y"/>
-                    		<div class="control__indicator"></div>
-                    	</label>
-                        <label class="control control--checkbox"><span>su</span>
-                    		<input type="checkbox" name="su" value="y"/>
-                    		<div class="control__indicator"></div>
-                    	</label>
-            		</div>
+                    </div>
                 </div>
 
                 <input type="submit" name="submit" value="submit" class="btn-login">
